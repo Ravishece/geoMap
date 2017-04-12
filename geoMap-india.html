@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Indian Cities - Cultivation</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/styles.css"  rel="stylesheet" />
+  </head>
+  
+  <body>
+    <div class="container row">
+      <div class="left-section col-md-3">
+          
+          <!-- Filter section starts -->
+          <div class="filter-section">
+            <div class="title">
+              <label>Filter by :</label>
+              <a href="#" class="reset-filter">Reset Filters</a>
+            </div>
+            
+            <div class="filtered-facets hide">
+              <ul>
+              </ul>
+            </div>
+            
+            <div class="dropdown-wrapper">
+              <label>Produce </label>:
+              <select id="productDropdown">
+                <option value="">--select--</option>
+                <option value="all">All</option>
+                <option value="tomato">Tomato</option>
+                <option value="potato">Potato</option>
+                <option value="brinjal">Brinjal</option>
+                <option value="coconut">Coconut</option>
+              </select>
+            </div>
+            
+            <div class="dropdown-wrapper">
+              <label>Country </label>:
+              <select id="locationStateDropdown">
+                <option value="">--select--</option>
+                <option value="all">All</option>
+                <option value="india">India</option>
+                <option value="usa">USA</option>
+                <option value="china">China</option>
+                <option value="france">France</option>
+              </select>
+            </div>
+            
+            <div class="dropdown-wrapper">
+              <label>Harvest Period </label>:
+              <select id="harvestDropdown">
+                <option value="">--select--</option>
+                <option value="all">All</option>
+                <option value="jan">Jan - Mar</option>
+                <option value="apr">Apr - Jun</option>
+                <option value="jul">Jul - Sep</option>
+                <option value="oct">Oct - Dec</option>
+              </select>
+            </div>
+        </div>
+        <!-- Filter section ends -->
+        
+      </div>
+      <div class="right-section col-md-9">
+        <div id="map"></div>  
+      </div>
+      
+      <!-- Map Container -->
+      
+    </div>
+    
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/main.js"></script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo3p_ZrMnTsvWXh9WrUr6CSc34LW1gAJ4&callback=initMap"></script>
+  </body>
+</html>
