@@ -5,8 +5,8 @@ window.customMapObject.selectedFilterFacets = [];
 
 window.initMap = function() {
   window.customMapObject.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: {lat: 23.6, lng: 78.2}
+    zoom:2,
+    center: {lat: 23.6, lng: 10.2}
   });
   
   $.getJSON('data/IndianCities.json',function(response){

@@ -4,13 +4,68 @@
     "lat": "18.975",
     "lon": "72.825833",
     "product":"coconut"
-},  {
+}, {
+    "name": "Delhi",
+    "state": "Delhi",
+    "lat": "28.666667",
+    "lon": "77.216667",
+    "product":"tomato"
+},{
+    "name": "Hyderabad",
+    "state": "Telangana",
+    "lat": "17.375278",
+    "lon": "78.474444",
+    "product":"tomato"
+}, {
+    "name": "Ahmedabad",
+    "state": "Gujarat",
+    "lat": "23.033333",
+    "lon": "72.616667",
+    "product":"tomato"
+}, {
     "name": "Chennai",
     "state": "Tamil Nadu",
     "lat": "13.083333",
     "lon": "80.283333",
     "product":"coconut"
-}, {  "name": "Nagpur",
+}, {
+    "name": "Kolkata",
+    "state": "West Bengal",
+    "lat": "22.569722",
+    "lon": "88.369722",
+    "product":"tomato"
+}, {
+    "name": "Surat",
+    "state": "Gujarat",
+    "lat": "20.966667",
+    "lon": "72.9",
+    "product":"coconut"
+}, {
+    "name": "Pune",
+    "state": "Maharashtra",
+    "lat": "18.533333",
+    "lon": "73.866667",
+    "product":"coconut"
+}, {
+    "name": "Jaipur",
+    "state": "Rajasthan",
+    "lat": "24.583333",
+    "lon": "86.85",
+    "product":"tomato"
+}, {
+    "name": "Lucknow",
+    "state": "Uttar Pradesh",
+    "lat": "26.85",
+    "lon": "80.916667",
+    "product":"tomato"
+}, {
+    "name": "Kanpur",
+    "state": "Uttar Pradesh",
+    "lat": "26.466667",
+    "lon": "80.35",
+    "product":"tomato"
+}, {
+    "name": "Nagpur",
     "state": "Maharashtra",
     "lat": "23.3",
     "lon": "82.3",
@@ -85,6 +140,30 @@
     "lon": "83.3",
     "product":"coconut"
 },{
+    "name": "Nellore",
+    "state": "Andhra Pradesh",
+    "lat": "14.433333",
+    "lon": "79.966667",
+    "product":"coconut"
+},{
+    "name": "Brahmapur",
+    "state": "Orissa",
+    "lat": "19.316667",
+    "lon": "84.783333",
+    "product":"coconut"
+},{
+    "name": "Gaya",
+    "state": "Bihar",
+    "lat": "24.783333",
+    "lon": "85",
+    "product":"tomato"
+},{
+    "name": "Bhagalpur",
+    "state": "Bihar",
+    "lat": "26.169722",
+    "lon": "83.872778",
+    "product":"tomato"
+},{
     "name": "Muzaffarpur",
     "state": "Bihar",
     "lat": "26.116667",
@@ -97,6 +176,18 @@
     "lon": "77.101667",
     "product":"tomato"
 },{
+    "name": "Raichur",
+    "state": "Karnataka",
+    "lat": "16.2",
+    "lon": "77.366667",
+    "product":"tomato"
+},{
+    "name": "Bangalore",
+    "state": "Karnataka",
+    "lat": "12.983333",
+    "lon": "77.583333",
+    "product":"tomato"
+},{
     "name": "Bhubaneswar",
     "state": "Orissa",
     "lat": "20.233333",
@@ -107,6 +198,18 @@
     "state": "Maharashtra",
     "lat": "18.6279288",
     "lon": "73.8009829",
+    "product":"potato"
+}, {
+    "name": "Patna",
+    "state": "Bihar",
+    "lat": "23.3",
+    "lon": "82.666667",
+    "product":"potato"
+}, {
+    "name": "Vadodara",
+    "state": "Gujarat",
+    "lat": "22.3",
+    "lon": "73.2",
     "product":"potato"
 }, {
     "name": "Ghaziabad",
@@ -151,6 +254,18 @@
     "lon": "75.5925",
     "product":"brinjal"
 }, {
+    "name": "Kalyan-Dombivali",
+    "state": "Maharashtra",
+    "lat": "19.235433",
+    "lon": "73.129889",
+    "product":"brinjal"
+}, {
+    "name": "Vasai-Virar",
+    "state": "Maharashtra",
+    "lat": "19.4258788",
+    "lon": "72.8224901",
+    "product":"brinjal"
+}, {
     "name": "Varanasi",
     "state": "Uttar Pradesh",
     "lat": "25.333333",
@@ -186,4 +301,58 @@
     "lat": "19.033049",
     "lon": "73.029662",
     "product":"coconut"
+}, {
+    "name": "Allahabad",
+    "state": "Uttar Pradesh",
+    "lat": "25.45",
+    "lon": "81.85",
+    "product":"tomato"
+}, {
+    "name": "Ranchi",
+    "state": "Jharkhand",
+    "lat": "23.35",
+    "lon": "85.333333",
+    "product":"potato"
+}, {
+    "name": "Howrah",
+    "state": "West Bengal",
+    "lat": "22.589167",
+    "lon": "88.310278",
+    "product":"tomato"
+}, {
+    "name": "Coimbatore",
+    "state": "Tamil Nadu",
+    "lat": "10.9925",
+    "lon": "76.961389",
+    "product":"coconut"
+}, {
+    "name": "Jabalpur",
+    "state": "Madhya Pradesh",
+    "lat": "23.166667",
+    "lon": "79.95",
+    "product":"brinjal"
+}, {
+    "name": "Gwalior",
+    "state": "Madhya Pradesh",
+    "lat": "26.223611",
+    "lon": "78.179167",
+    "product":"brinjal"
+}, {
+    "name": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "lat": "16.516667",
+    "lon": "80.616667",
+    "product":"potato"
+}, {
+    "name": "Jodhpur",
+    "state": "Rajasthan",
+    "lat": "26.286667",
+    "lon": "73.03",
+    "product":"potato"
+}, {
+    "name": "Madurai",
+    "state": "Tamil Nadu",
+    "lat": "9.933333",
+    "lon": "78.116667",
+    "product":"tomato"
 }]
