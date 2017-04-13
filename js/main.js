@@ -75,6 +75,10 @@ $('.dropdown-wrapper select').on('change',function(e){
   $(e.target).parent('.dropdown-wrapper').addClass('hide');
   addFacetFilter(val,dropdownId);
   
+  if(dropdownId === 'locationCountryDropdown' && val !== 'all'){
+    $('#locationStateDropdown').parents('.dropdown-wrapper').removeClass('hide');
+  }
+  
   var response1 = window.customMapObject.places;
   if(val !== 'all'){
     response1 = filterArrayOfObjectsWithKeys(window.customMapObject.places,'product',val);  
@@ -82,6 +86,11 @@ $('.dropdown-wrapper select').on('change',function(e){
   setMarkers(window.customMapObject.map, response1);
   
 });
+
+$('.filter-section').on('change','#locationStateDropdown',function(){
+     $('#locationCityDropdown').parents('.dropdown-wrapper').removeClass('hide');
+});
+
 
 $('.filter-section').on('click','.clear-facet',function(e){
     $(e.target).parents('li').remove();    
@@ -92,6 +101,15 @@ $('.filter-section').on('click','.clear-facet',function(e){
     var arrIndex = window.customMapObject.selectedFilterFacets.indexOf(key);
     window.customMapObject.selectedFilterFacets.splice(arrIndex,1);
     visualizeFacetedFilters();
+    
+    if(dropdownId === 'locationCountryDropdown'){
+      $('#locationCityDropdown').parents('.dropdown-wrapper').addClass('hide');
+      $('#locationStateDropdown').parents('.dropdown-wrapper').addClass('hide');
+    }
+    
+    if(dropdownId === 'locationStateDropdown'){
+      $('#locationCityDropdown').parents('.dropdown-wrapper').addClass('hide');
+    }
 });
 
 $('.reset-filter').on('click',function(){

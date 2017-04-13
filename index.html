@@ -28,7 +28,6 @@
               <label>Produce </label>:
               <select id="productDropdown">
                 <option value="">--select--</option>
-                <option value="all">All</option>
                 <option value="tomato">Tomato</option>
                 <option value="potato">Potato</option>
                 <option value="brinjal">Brinjal</option>
@@ -38,9 +37,8 @@
             
             <div class="dropdown-wrapper">
               <label>Country </label>:
-              <select id="locationStateDropdown">
+              <select id="locationCountryDropdown">
                 <option value="">--select--</option>
-                <option value="all">All</option>
                 <option value="india">India</option>
                 <option value="usa">USA</option>
                 <option value="china">China</option>
@@ -48,11 +46,32 @@
               </select>
             </div>
             
+            <div class="dropdown-wrapper hide">
+              <label>State/Province </label>:
+              <select id="locationStateDropdown">
+                <option value="">--select--</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="tamilnadu">Tamil Nadu</option>
+                <option value="kerala">Kerala</option>
+                <option value="andhraPradesh">Andhra Pradesh</option>
+              </select>
+            </div>
+            
+            <div class="dropdown-wrapper hide">
+              <label>City/Village </label>:
+              <select id="locationCityDropdown">
+                <option value="">--select--</option>
+                <option value="bengaluru">Bengaluru</option>
+                <option value="hubli">Hubli</option>
+                <option value="mysore">Mysore</option>
+                <option value="mangalore">Mangalore</option>
+              </select>
+            </div>
+            
             <div class="dropdown-wrapper">
               <label>Harvest Period </label>:
               <select id="harvestDropdown">
                 <option value="">--select--</option>
-                <option value="all">All</option>
                 <option value="jan">Jan - Mar</option>
                 <option value="apr">Apr - Jun</option>
                 <option value="jul">Jul - Sep</option>
