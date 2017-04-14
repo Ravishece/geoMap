@@ -19,14 +19,14 @@
               <a href="#" class="reset-filter">Reset Filters</a>
             </div>
             
-            <div class="filtered-facets hide">
+            <div class="filtered-facets">
               <ul>
               </ul>
             </div>
             
             <div class="dropdown-wrapper">
               <label>Produce </label>:
-              <select id="productDropdown">
+              <select data-searchCriteria="product" id="productDropdown">
                 <option value="">--select--</option>
                 <option value="tomato">Tomato</option>
                 <option value="potato">Potato</option>
@@ -37,7 +37,7 @@
             
             <div class="dropdown-wrapper">
               <label>Country </label>:
-              <select id="locationCountryDropdown">
+              <select data-searchCriteria="country" id="locationCountryDropdown">
                 <option value="">--select--</option>
                 <option value="india">India</option>
                 <option value="usa">USA</option>
@@ -48,7 +48,7 @@
             
             <div class="dropdown-wrapper hide">
               <label>State/Province </label>:
-              <select id="locationStateDropdown">
+              <select data-searchCriteria="state" id="locationStateDropdown">
                 <option value="">--select--</option>
                 <option value="karnataka">Karnataka</option>
                 <option value="tamilnadu">Tamil Nadu</option>
@@ -59,7 +59,7 @@
             
             <div class="dropdown-wrapper hide">
               <label>City/Village </label>:
-              <select id="locationCityDropdown">
+              <select data-searchCriteria="city" id="locationCityDropdown">
                 <option value="">--select--</option>
                 <option value="bengaluru">Bengaluru</option>
                 <option value="hubli">Hubli</option>
@@ -70,7 +70,7 @@
             
             <div class="dropdown-wrapper">
               <label>Harvest Period </label>:
-              <select id="harvestDropdown">
+              <select data-searchCriteria="harvest" id="harvestDropdown">
                 <option value="">--select--</option>
                 <option value="jan">Jan - Mar</option>
                 <option value="apr">Apr - Jun</option>

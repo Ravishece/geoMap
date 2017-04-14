@@ -1,7 +1,23 @@
 
 window.customMapObject = {};
 window.customMapObject.markers = [];
-window.customMapObject.selectedFilterFacets = [];
+/*window.customMapObject.selectedFilterFacets = {
+    'product':[],
+    'country':[],
+    'state':[],
+    'city':[],
+    'harvest':[]
+};*/
+window.customMapObject.initSelectedFilterFacets = function(){
+  window.customMapObject.selectedFilterFacets = {
+      'product':[],
+      'country':[],
+      'state':[],
+      'city':[],
+      'harvest':[]
+  };
+};
+window.customMapObject.initSelectedFilterFacets();
 
 window.initMap = function() {
   window.customMapObject.map = new google.maps.Map(document.getElementById('map'), {
@@ -12,7 +28,6 @@ window.initMap = function() {
   $.getJSON('data/IndianCities.json',function(response){
     var places = [];
     window.customMapObject.places = response;
-    //setMarkers(window.map, window.places);
   });
   
 }
@@ -71,9 +86,11 @@ $('.dropdown-wrapper select').on('change',function(e){
   var val = e.target.value;
   var dropdownId = $(e.target).attr('id');
   
-  window.customMapObject.selectedFilterFacets.push(val);
+  window.customMapObject.selectedFilterFacets[$(e.target).attr('data-searchCriteria')].push(val);
+  //window.customMapObject.selectedFilterFacets.push(val);
   $(e.target).parent('.dropdown-wrapper').addClass('hide');
-  addFacetFilter(val,dropdownId);
+  var searchCriteria = $(e.target).attr('data-searchCriteria');
+  addFacetFilter(searchCriteria,val,dropdownId);
   
   if(dropdownId === 'locationCountryDropdown' && val !== 'all'){
     $('#locationStateDropdown').parents('.dropdown-wrapper').removeClass('hide');
@@ -98,18 +115,30 @@ $('.filter-section').on('click','.clear-facet',function(e){
     var key = $(e.target).siblings('a').attr('data-key');
     $('#'+dropdownId ).parents('.dropdown-wrapper').removeClass('hide');
     $('#'+dropdownId )[0].selectedIndex = 0;
-    var arrIndex = window.customMapObject.selectedFilterFacets.indexOf(key);
-    window.customMapObject.selectedFilterFacets.splice(arrIndex,1);
-    visualizeFacetedFilters();
+    var arrIndex =window.customMapObject.selectedFilterFacets[$(e.target).siblings('a').attr('data-searchCriteria')].indexOf(key);
+    window.customMapObject.selectedFilterFacets[$(e.target).siblings('a').attr('data-searchCriteria')].splice(arrIndex,1);
+    //visualizeFacetedFilters();
     
     if(dropdownId === 'locationCountryDropdown'){
-      $('#locationCityDropdown').parents('.dropdown-wrapper').addClass('hide');
       $('#locationStateDropdown').parents('.dropdown-wrapper').addClass('hide');
+      $('#locationCityDropdown').parents('.dropdown-wrapper').addClass('hide');
+      $('#locationStateDropdown')[0].selectedIndex = 0;
+      $('#locationCityDropdown')[0].selectedIndex = 0;
+      $('#facet-filter-locationStateDropdown').parent('li').remove();
+      $('#facet-filter-locationCityDropdown').parent('li').remove();
+      
+       window.customMapObject.selectedFilterFacets.state = [];
+       window.customMapObject.selectedFilterFacets.city = [];
+       
     }
     
     if(dropdownId === 'locationStateDropdown'){
       $('#locationCityDropdown').parents('.dropdown-wrapper').addClass('hide');
+      $('#facet-filter-locationCityDropdown').parent('li').remove();
+      $('#locationCityDropdown')[0].selectedIndex = 0;
+       window.customMapObject.selectedFilterFacets.city = [];
     }
+    
 });
 
 $('.reset-filter').on('click',function(){
@@ -118,12 +147,12 @@ $('.reset-filter').on('click',function(){
         $(this)[0].selectedIndex = 0;
         $(this).parents('.dropdown-wrapper').removeClass('hide');
     });
-    window.customMapObject.selectedFilterFacets = [];
+    window.customMapObject.initSelectedFilterFacets();
 });
 
-function addFacetFilter(key, dropdownId){
-    visualizeFacetedFilters();
-    var htmlStr = '<li><a href="#" data-key="' + key + '" id="facet-filter-'+  dropdownId +'">'+ key +'</a><span class="clear-facet">x</span></li>';
+function addFacetFilter(searchCriteria, key, dropdownId){
+    //visualizeFacetedFilters();
+    var htmlStr = '<li><a href="#" data-searchCriteria="' + searchCriteria + '" data-key="' + key + '" id="facet-filter-'+  dropdownId +'">'+ key +'</a><span class="clear-facet">x</span></li>';
     $('.filtered-facets ul').append(htmlStr);
 }
 
