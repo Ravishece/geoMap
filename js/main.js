@@ -147,7 +147,7 @@ $('.dropdown-wrapper select').on('change',function(e){
       lng: $(e.target).find('option[value="'+ val +'"]').attr('data-lng')
     }
   }else{
-    window.customMapObject.currentSelectedDropdown = {};
+   // window.customMapObject.currentSelectedDropdown = {};
   }
   // var response1 = window.customMapObject.places;
   // if(val !== 'all'){
@@ -248,8 +248,8 @@ function filterPlacesOnMap(){
     qryStr = qryStr.substring(qryStr.length-1,-1);
   }
   
-  //var url = 'http://10.117.147.32:8080/marketplaceapp/v1/api/products?';
-  var url = 'data/IndianCities.4.json?';
+  var url = 'http://10.117.147.32:8080/marketplaceapp/v1/api/products?';
+  //var url = 'data/IndianCities.4.json?';
   
   $.getJSON(url +qryStr,function(response){
     var places = [];
