@@ -267,6 +267,7 @@ function filterPlacesOnMap(){
       window.customMapObject.filteredPlaces = [];
     }
     
+    updateFilterSection(response);
     setMarkers(window.customMapObject.map, window.customMapObject.filteredPlaces);
     
     $('.loading').addClass('hide');
