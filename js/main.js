@@ -248,7 +248,10 @@ function filterPlacesOnMap(){
     qryStr = qryStr.substring(qryStr.length-1,-1);
   }
   
-  $.getJSON('data/IndianCities.4.json?'+qryStr,function(response){
+  //var url = 'http://10.117.147.32:8080/marketplaceapp/v1/api/products?';
+  var url = 'data/IndianCities.4.json?';
+  
+  $.getJSON(url +qryStr,function(response){
     var places = [];
     window.customMapObject.filteredPlaces = response;
     for(fil in window.customMapObject.selectedFilterFacets){
