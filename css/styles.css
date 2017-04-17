@@ -57,6 +57,10 @@ body{
     width: 130px;
 }
 
+.dropdown-wrapper.disabled{
+    color: #ccc;
+}
+
 .filtered-facets ul{
     list-style-type: none;
     margin: 0;
@@ -85,4 +89,25 @@ body{
     padding: 0 3px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.search-section{
+    width: 100%;
+    display: inline-block;
+}
+
+.search-btn{
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9999;
+    background: #fff;
+    opacity: 0.9;
+    text-align: center;
 }

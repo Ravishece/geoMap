@@ -9,6 +9,10 @@
   </head>
   
   <body>
+    <div class="loading hide">
+      <img src="images/loading_1.gif" />
+    </div>
+    
     <div class="container row">
       <div class="left-section col-md-3">
           
@@ -26,7 +30,7 @@
             
             <div class="dropdown-wrapper">
               <label>Produce </label>:
-              <select data-searchCriteria="product" id="productDropdown">
+              <select data-searchCriteria="type" id="productDropdown">
                 <option value="">--select--</option>
                 <option value="tomato">Tomato</option>
                 <option value="potato">Potato</option>
@@ -37,7 +41,7 @@
             
             <div class="dropdown-wrapper">
               <label>Country </label>:
-              <select data-searchCriteria="country" id="locationCountryDropdown">
+              <select data-searchCriteria="country" id="countryDropdown">
                 <option value="">--select--</option>
                 <option value="india">India</option>
                 <option value="usa">USA</option>
@@ -46,9 +50,9 @@
               </select>
             </div>
             
-            <div class="dropdown-wrapper hide">
+            <div class="dropdown-wrapper disabled">
               <label>State/Province </label>:
-              <select data-searchCriteria="state" id="locationStateDropdown">
+              <select data-searchCriteria="state" id="stateDropdown" disabled="disabled">
                 <option value="">--select--</option>
                 <option value="karnataka">Karnataka</option>
                 <option value="tamilnadu">Tamil Nadu</option>
@@ -57,9 +61,9 @@
               </select>
             </div>
             
-            <div class="dropdown-wrapper hide">
+            <div class="dropdown-wrapper disabled">
               <label>City/Village </label>:
-              <select data-searchCriteria="city" id="locationCityDropdown">
+              <select data-searchCriteria="city" id="cityDropdown" disabled="disabled">
                 <option value="">--select--</option>
                 <option value="bengaluru">Bengaluru</option>
                 <option value="hubli">Hubli</option>
@@ -77,6 +81,10 @@
                 <option value="jul">Jul - Sep</option>
                 <option value="oct">Oct - Dec</option>
               </select>
+            </div>
+            
+            <div class="search-section">
+              <input type="button" name="Search" value="Show Details" class="search-btn" />
             </div>
         </div>
         <!-- Filter section ends -->
