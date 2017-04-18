@@ -25,18 +25,14 @@ window.initMap = function() {
     center: {lat: 23.6, lng: 10.2}
   });
   
-  $.getJSON('data/IndianCities.4.json',function(response){
+  var url = 'http://10.117.147.32:8080/marketplaceapp/v1/api/products?';
+  //var url = 'data/IndianCities.4.json?';
+
+  $.getJSON(url,function(response){
     updateFilterSection(response);
     $('.loading').addClass('hide');
   });
-  
-  /*$.getJSON('http://10.117.147.32:8080/marketplaceapp/v1/api/products?country=India',function(response){
-    var places = [];
-    window.customMapObject.places = response;
-  });*/
-  
- 
-  
+
 }
 
 function filterArrayOfObjectsWithKeys(arr,key,value){
@@ -109,9 +105,9 @@ function setMarkers(map, places) {
     if(window.customMapObject.currentSelectedDropdown.name === 'countryDropdown'){
       zoomLevel = 4;
     }else if(window.customMapObject.currentSelectedDropdown.name === 'stateDropdown'){
-      zoomLevel = 5;
-    }else if(window.customMapObject.currentSelectedDropdown.name === 'cityDropdown'){
       zoomLevel = 6;
+    }else if(window.customMapObject.currentSelectedDropdown.name === 'cityDropdown'){
+      zoomLevel = 8;
     }
     window.customMapObject.map.setZoom(zoomLevel);
     window.customMapObject.map.setCenter({"lat":lat,"lng":lng});
@@ -122,10 +118,33 @@ function setMarkers(map, places) {
 }
 
 $('.search-btn').on('click',function(){
-  
+  $('.modal-body').empty();
+  var str ='';
+  var arr =  window.customMapObject.filteredPlaces;
+  for(var i=0;i<arr.length;i++){
+    str += '<div class="media">'+
+                '<a class="pull-left" href="#">'+
+                  '<img class="media-object" src="images/Farmer-icon.png"></a>'+
+                '<div class="media-body">'+
+                  '<h4 class="media-heading">'+arr[i].vendor.name +'<span>'+
+                  '<input type="number" class="rating" name="'+ arr[i].id +'" data-clearable="remove" value="'+ Math.floor(arr[i].vendor.rating) +'" data-readonly />'+
+                  '</h4>'+
+                  '<span>'+arr[i].vendor.email+'</span><br />'+
+                  '<span>Address line 1</span>,<br />'+
+                  '<span>'+arr[i].city+'</span>, <span>'+arr[i].state+'</span>, <span>'+arr[i].country+'</span><br />'+
+                  '<span class="label">Product type</span><span>: '+arr[i].type+'</span><br />'+
+                  '<span class="label">Quantity</span><span>: '+arr[i].quantity+'</span><br />'+
+                  '<span class="label">Harvest Period</span><span>: '+ formatDate(arr[i].harvestDate)+'</span></div>'+
+              '</div>'
+  }; 
+  $('.modal-body').append(str);
+  $('input.rating').rating();
+
 });
 
 $('.dropdown-wrapper select').on('change',function(e){
+  $('.search-btn').removeAttr('disabled');
+
   var val = e.target.value;
   var dropdownId = $(e.target).attr('id');
   
@@ -176,6 +195,12 @@ $('.filter-section').on('click','.clear-facet',function(e){
     window.customMapObject.selectedFilterFacets[$(e.target).siblings('a').attr('data-searchCriteria')].splice(arrIndex,1);
     //visualizeFacetedFilters();
     
+    if($('.filter-section ul li').length === 0){
+      $('.search-btn').attr('disabled','disabled');
+    }else{
+      $('.search-btn').removeAttr('disabled');
+    }
+
     if(dropdownId === 'countryDropdown'){
       $('#stateDropdown').parents('.dropdown-wrapper').addClass('disabled');
       $('#cityDropdown').parents('.dropdown-wrapper').addClass('disabled');
@@ -205,6 +230,8 @@ $('.filter-section').on('click','.clear-facet',function(e){
 });
 
 $('.reset-filter').on('click',function(){
+    $('.search-btn').removeAttr('disabled');
+    
     window.customMapObject.currentSelectedDropdown = {};
     $('.filter-section ul').empty();
     $('.dropdown-wrapper select').each(function(){
@@ -212,10 +239,18 @@ $('.reset-filter').on('click',function(){
         $(this).parents('.dropdown-wrapper').removeClass('hide');
     });
     window.customMapObject.initSelectedFilterFacets();
-    
-    for (var i = 0; i < window.customMapObject.markers.length; i++) {
-      window.customMapObject.markers[i].setMap(null);
-    }
+
+    //reset the state and city fields
+    $('#stateDropdown').parents('.dropdown-wrapper').addClass('disabled');
+    $('#cityDropdown').parents('.dropdown-wrapper').addClass('disabled');
+    $('#stateDropdown').attr('disabled','disabled');
+    $('#cityDropdown').attr('disabled','disabled');
+
+    filterPlacesOnMap();
+
+    // for (var i = 0; i < window.customMapObject.markers.length; i++) {
+    //   window.customMapObject.markers[i].setMap(null);
+    // }
     
 });
 
@@ -244,6 +279,11 @@ function filterPlacesOnMap(){
       qryStr += item + '='+selectedFilters[item][0] + '&';
     }
   }
+
+  if($('#harvestDropdown').val() != ''){
+    qryStr += 'month' + $('#harvestDropdown').val()+ '&';
+  }
+
   if(qryStr.length > 0){
     qryStr = qryStr.substring(qryStr.length-1,-1);
   }
@@ -288,8 +328,13 @@ function updateFilterSection(arr){
 }
 
 function populateFilterParamsObject(dropdownId,arr,searchCriteria ){
-  window.customMapObject.filterObjectParams[dropdownId] = [];
   
+  window.customMapObject.filterObjectParams[dropdownId] = [];
+
+  if(dropdownId === 'harvestDropdown'){
+    return;
+  }
+
   if(dropdownId.indexOf('country') !== -1 || dropdownId.indexOf('state') !== -1 || dropdownId.indexOf('city') !== -1){
     window.customMapObject.filterObjectParams[dropdownId+'Obj'] = [];
     for(var i=0;i<arr.length;i++){
@@ -335,5 +380,9 @@ function updateDropdowns(id,arr,loc){
   $('#'+id).append(firstOptionVal + optionVals);
 }
 
-
+function formatDate(dt){
+  var dt = new Date(dt);
+  var monthArr = ['January','February', 'March', 'April','May', 'June', 'August', 'September', 'October', 'November', 'December'];
+  return dt.getDate() + ', ' + monthArr[dt.getMonth()-1] + ' ' + dt.getFullYear();
+}
 //});

@@ -6,6 +6,32 @@
     <title>Indian Cities - Cultivation</title>
     <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="css/styles.css"  rel="stylesheet" />
+    
+    <style>
+    .rating :after{
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label:before { 
+      margin: 5px;
+      font-size: 1.25em;
+      font-family: FontAwesome;
+      display: inline-block;
+      content: "\f005";
+    }
+
+    .rating > .half:before { 
+      content: "\f089";
+      position: absolute;
+    }
+
+    .rating > label { 
+      color: #ddd; 
+     float: right; 
+    }
+
+    </style>
   </head>
   
   <body>
@@ -18,6 +44,11 @@
           
           <!-- Filter section starts -->
           <div class="filter-section">
+<!-- 
+            <div class="rating">
+              <label></label>
+            </div>
+ -->
             <div class="title">
               <label>Filter by :</label>
               <a href="#" class="reset-filter">Reset Filters</a>
@@ -32,10 +63,6 @@
               <label>Produce </label>:
               <select data-searchCriteria="type" id="productDropdown">
                 <option value="">--select--</option>
-                <option value="tomato">Tomato</option>
-                <option value="potato">Potato</option>
-                <option value="brinjal">Brinjal</option>
-                <option value="coconut">Coconut</option>
               </select>
             </div>
             
@@ -43,10 +70,6 @@
               <label>Country </label>:
               <select data-searchCriteria="country" id="countryDropdown">
                 <option value="">--select--</option>
-                <option value="india">India</option>
-                <option value="usa">USA</option>
-                <option value="china">China</option>
-                <option value="france">France</option>
               </select>
             </div>
             
@@ -54,10 +77,6 @@
               <label>State/Province </label>:
               <select data-searchCriteria="state" id="stateDropdown" disabled="disabled">
                 <option value="">--select--</option>
-                <option value="karnataka">Karnataka</option>
-                <option value="tamilnadu">Tamil Nadu</option>
-                <option value="kerala">Kerala</option>
-                <option value="andhraPradesh">Andhra Pradesh</option>
               </select>
             </div>
             
@@ -65,26 +84,31 @@
               <label>City/Village </label>:
               <select data-searchCriteria="city" id="cityDropdown" disabled="disabled">
                 <option value="">--select--</option>
-                <option value="bengaluru">Bengaluru</option>
-                <option value="hubli">Hubli</option>
-                <option value="mysore">Mysore</option>
-                <option value="mangalore">Mangalore</option>
               </select>
             </div>
             
-            <div class="dropdown-wrapper">
+            <!-- <div class="dropdown-wrapper">
               <label>Harvest Period </label>:
-              <select data-searchCriteria="harvest" id="harvestDropdown">
+              <select data-searchCriteria="month" id="harvestDropdown">
                 <option value="">--select--</option>
-                <option value="jan">Jan - Mar</option>
-                <option value="apr">Apr - Jun</option>
-                <option value="jul">Jul - Sep</option>
-                <option value="oct">Oct - Dec</option>
+                <option value="1">Jan</option>
+                <option value="2">Feb</option>
+                <option value="3">Mar</option>
+                <option value="4">Apr</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">Aug</option>
+                <option value="9">Sep</option>
+                <option value="10">Oct</option>
+                <option value="11">Nov</option>
+                <option value="12">Dec</option>
               </select>
-            </div>
+            </div> -->
             
+
             <div class="search-section">
-              <input type="button" name="Search" value="Show Details" class="search-btn" />
+              <button type="button" class="btn btn-info btn-md search-btn" data-toggle="modal" data-target="#myModal" disabled="disabled">Show Producers</button>
             </div>
         </div>
         <!-- Filter section ends -->
@@ -96,12 +120,56 @@
       
       <!-- Map Container -->
       
+      <!-- Modal Starts -->
+      <div class="modal fade details-modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Details</h4>
+            </div>
+            <div class="modal-body">
+              <!--
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object" src="images/Farmer-icon.png">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading">Farmer's Name <span>Rating</span></h4>
+                  <span>abc@gmail.com</span>
+                  <span>Address line 1</span>,
+                  <span>Address line 2</span>,<br />
+                  <span>City</span>,<span>State</span><span>Country</span>
+                  <br />
+                  <span>Product type :</span><span>Product</span>
+                  <span>Quantity :</span><span>quantity</span>
+                  <span>Harvest Period :</span><span>21/21/2017</span>
+                </div>
+                <a class="pull-right" href="#">
+                  <img class="media-object" data-src="images/Farmer-icon.png">
+                </a>
+              </div>
+              -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <!-- Modal Ends -->
+
     </div>
     
-    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
     <script src="js/main.js"></script>
-    
+    <script src="js/bootstrap-rating-input.js"></script>
+
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo3p_ZrMnTsvWXh9WrUr6CSc34LW1gAJ4&callback=initMap"></script>
   </body>
 </html>

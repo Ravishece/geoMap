@@ -111,3 +111,35 @@ body{
     opacity: 0.9;
     text-align: center;
 }
+
+.details-modal .media{
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 10px;
+}
+
+.details-modal .modal-body{
+    clear: both;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.details-modal .media-object{
+    width: 128px;
+    height: 128px;
+}
+
+.details-modal .media .label{
+    width: 120px;
+    display: inline-block;
+    color: black;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 0;
+    text-align: left;
+}
+
+.rating-input{
+    width: 100px;
+    display: inline-block;
+    float: right;
+}
